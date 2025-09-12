@@ -16,7 +16,7 @@ export default function Logo() {
           target.style.display = "none"; // hide broken image
           target.insertAdjacentHTML(
             "afterend",
-            `<h1 class="text-lg font-semibold tracking-wide">Universe<span class="font-bold text-lg text-sky-400">Ex</span></h1>`
+            `<h1 class="text-lg font-semibold tracking-wide logo-fallback"><span class="transition duration-700 group-hover:brightness-125 text-white group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.9)]">Universe</span><span class="font-bold text-lg text-sky-400">Ex</span></h1>`
           );
         }}
       />

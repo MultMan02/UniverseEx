@@ -5,7 +5,8 @@ import { useMemo } from 'react';
 import type { Rover, Camera } from '@/lib/nasa';
 import { camerasByRover } from '@/lib/nasa';
 
-const MIN_DATE = '2003-01-01';           // “after 2002” → Jan 1, 2003
+const MIN_DATE = '2012-01-01';
+const DEFAULT_DATE = '2015-05-30';
 const TODAY = new Date().toISOString().slice(0, 10);
 
 export default function Filters() {
@@ -16,7 +17,7 @@ export default function Filters() {
   const camera = (params.get('camera') ?? '') as Camera | '';
   const dateParam = params.get('date'); // may be null if not set
 
-  const date = dateParam ?? TODAY;
+  const date = dateParam ?? DEFAULT_DATE;
 
   const cameraOptions = useMemo(() => camerasByRover[rover], [rover]);
 
@@ -44,9 +45,9 @@ export default function Filters() {
     >
       {/* Rover */}
       <div className="flex flex-col gap-1">
-        <label className="text-xs text-neutral-400">Rover</label>
+        <label className="text-xs text-sky-400">Rover</label>
         <select
-          className="rounded-md border border-neutral-700 bg-neutral-950 px-3 py-2"
+          className="rounded-md border border-neutral-700 bg-neutral-950 px-3 py-2 h-10"
           value={rover}
           onChange={(e) => update('rover', e.target.value)}
         >
@@ -58,9 +59,9 @@ export default function Filters() {
 
       {/* Camera */}
       <div className="flex flex-col gap-1">
-        <label className="text-xs text-neutral-400">Camera</label>
+        <label className="text-xs text-sky-400">Camera</label>
         <select
-          className="rounded-md border border-neutral-700 bg-neutral-950 px-3 py-2"
+          className="rounded-md border border-neutral-700 bg-neutral-950 px-3 py-2 h-10"
           value={camera}
           onChange={(e) => update('camera', e.target.value)}
         >
@@ -73,10 +74,10 @@ export default function Filters() {
 
       {/* Date (limited) */}
       <div className="flex flex-col gap-1">
-        <label className="text-xs text-neutral-400">Earth date</label>
+        <label className="text-xs text-sky-400">Data da Terra</label>
         <input
           type="date"
-          className="rounded-md border border-neutral-700 bg-neutral-950 px-3 py-2"
+          className="rounded-md border border-neutral-700 bg-neutral-950 px-3 py-2 h-10"
           value={date}
           min={MIN_DATE}
           max={TODAY}
@@ -86,12 +87,12 @@ export default function Filters() {
 
       {/* Search */}
       <div className="flex flex-col gap-1">
-        <label className="text-xs text-neutral-400">Search (Rover or Camera)</label>
+        <label className="text-xs text-sky-400">Pesquisar (Rover ou Camera)</label>
         <input
           type="text"
           placeholder="e.g., Curiosity, NAVCAM"
           defaultValue={params.get('q') ?? ''}
-          className="rounded-md border border-neutral-700 bg-neutral-950 px-3 py-2"
+          className="rounded-md border border-neutral-700 bg-neutral-950 px-3 py-2 h-10"
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               const target = e.target as HTMLInputElement;
