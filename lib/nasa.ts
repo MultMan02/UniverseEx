@@ -20,3 +20,4 @@ export interface MarsPhoto {
   rover: { name: string };
   camera: { name: string; full_name: string };
 }
+

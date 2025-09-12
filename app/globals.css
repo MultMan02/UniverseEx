@@ -1,6 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root { color-scheme: dark; }
 body { @apply bg-neutral-950 text-neutral-100; }
+
+body { 
+  @apply bg-neutral-950 text-neutral-100;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+a { 
+    @apply text-blue-400 hover:text-blue-300 transition duration-700 ease-in-out;
+    text-decoration: none;
+}
+
+.logo-fallback {
+  font-family: Arial, Helvetica, sans-serif; /* or keep Tailwind's default */
+}
+
+html::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: #000;
+  border-radius: 10px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #187bc3;
+  border-radius: 10px;
+}
