@@ -62,7 +62,7 @@ export default function ParticlesBg() {
         particles: {
           number: {
             value: 80,
-            density: { enable: true}, // Densidade para boa distribuição
+            density: { enable: true }, // Densidade para boa distribuição
           },
           color: { value: '#ffffff' }, // Círculos brancos pequenos
           links: {

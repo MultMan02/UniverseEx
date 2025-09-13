@@ -84,12 +84,13 @@ async function fetchPhotos({
  *
  * @param {{ searchParams: Promise<Record<string, string | string[] | undefined>> }} props
  */
-export default async function Page(props: {
+export default async function Page({
+  searchParams
+}: {
+  // Destruturando `searchParams` de props com objeto vazio default
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  // Converte a Promise de searchParams (Next.js 15) em objeto simples
-  const sp = await props.searchParams;
-
+  const sp = await searchParams;
   // Helper para normalizar valores vindos como string|string[]
   const pick = (v: string | string[] | undefined) =>
     Array.isArray(v) ? v[0] : v;

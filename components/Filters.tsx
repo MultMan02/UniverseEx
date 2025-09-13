@@ -1,5 +1,5 @@
-// components/Filters.tsx
-'use client';
+"use client"
+
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
 import type { Rover, Camera } from '@/lib/nasa';
