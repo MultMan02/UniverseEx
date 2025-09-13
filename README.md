@@ -1,12 +1,6 @@
-![UniverseEx Logo](public/images/logo.png)
-
-<style>
-   img[alt="UniverseEx Logo"] {
-      max-width: 400px;
-      display: block;
-      margin: 0 auto 20px;
-   }
-</style>
+<p align="center">
+  <img src="public/images/logo.png" alt="UniverseEx Logo" width="400"/>
+</p>
 
 Bem-vindo ao **UniverseEx**, um projeto de Front-End desenvolvido como parte de um desafio técnico.
 O objetivo é construir uma aplicação moderna onde usuários podem **visualizar, buscar e filtrar imagens de Marte** capturadas pelos Rovers da NASA.
@@ -56,20 +50,13 @@ Esse projeto combina **tecnologia de ponta (Next.js 15)** com boas práticas de 
 
 ## 📸 Preview
 
-![Preview da Aplicação](readme-imgs/phoneandlaptop.png)
+<p align="center">
+  <img src="readme-imgs/phoneandlaptop.png" alt="Preview da Aplicação" width="600">
+</p>
 
-![Mockup em celular](readme-imgs/phone-mockup.png)
-
-<style>
-   img[alt="Preview da Aplicação"],
-   img[alt="Mockup em celular"] {
-      max-width: 90%;
-      display: block;
-      margin: 20px auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-   }
-</style>
+<p align="center">
+  <img src="readme-imgs/phone-mockup.png" alt="Mockup em celular" width="300">
+</p>
 ---
 
 ## 👨‍🚀 Autor
