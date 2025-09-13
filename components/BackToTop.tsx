@@ -2,16 +2,35 @@
 
 import { useEffect, useState } from "react";
 
+/**
+ * Botão flutuante "Voltar ao topo".
+ *
+ * Características:
+ * - Fica fixo no canto inferior (direita em telas médias+; centralizado horizontalmente por translate-x).
+ * - Só aparece após rolar ~200px.
+ * - Ao passar o mouse, aumenta a largura (abre para os dois lados) e a seta sobe (com overflow hidden).
+ * - Cor de hover em sky-400, como solicitado.
+ */
 export default function BackToTop() {
+  // Controla a visibilidade do botão com base no scroll atual
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    // Função que atualiza o estado com base na rolagem vertical
     const toggle = () => setVisible(window.scrollY > 200);
+
+    // Atualiza imediatamente ao montar (caso a página já esteja rolada)
     toggle();
+
+    // Listener de scroll (passive para melhor performance)
     window.addEventListener("scroll", toggle, { passive: true });
+    // Cleanup: remove o listener ao desmontar
     return () => window.removeEventListener("scroll", toggle);
   }, []);
 
+  /**
+   * Faz o scroll suave até o topo da página.
+   */
   const toTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
@@ -19,19 +38,20 @@ export default function BackToTop() {
       onClick={toTop}
       aria-label="Back to top"
       className={[
+        // Posição fixa; em telas médias move mais à direita. O translate centraliza no eixo X.
         "group fixed bottom-6 left-[84%] md:left-[95%] -translate-x-1/2 z-50",
-        // base
+        // Base do botão (círculo discreto)
         "h-12 w-12 rounded-full border-none bg-neutral-900",
         "flex items-center justify-center overflow-hidden",
-        // subtle ring glow
-        "shadow-[0_0_0_3px_rgba(14,165,233,0.25)]", // sky-400 tint
-        // transitions + hover expansion (opens both sides)
+        // Anel de brilho sutil com tom sky-400
+        "shadow-[0_0_0_3px_rgba(14,165,233,0.25)]",
+        // Transições e expansão horizontal no hover (abre para ambos os lados)
         "transition-all duration-300 hover:w-36",
-        // show/hide based on scroll
+        // Exibição condicional
         visible ? "opacity-100" : "pointer-events-none opacity-0",
       ].join(" ")}
     >
-      {/* Arrow */}
+      {/* Ícone de seta (SVG). Ao hover, a seta se move para cima (fora da área visível). */}
       <svg
         viewBox="0 0 384 512"
         className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-12"
@@ -42,7 +62,7 @@ export default function BackToTop() {
         />
       </svg>
 
-      {/* Label */}
+      {/* Rótulo que aparece no hover (mantido invisível no estado normal para não poluir visual) */}
       <span
         className={[
           "absolute text-[0px] text-white text-shadow-[0_0_5px_black]",
@@ -53,7 +73,7 @@ export default function BackToTop() {
         Back to Top
       </span>
 
-      {/* Hover color layer (sky-400) */}
+      {/* Camada de cor em hover (sky-400). Fica por baixo do conteúdo do botão. */}
       <div
         className={[
           "absolute inset-0 -z-10 rounded-full",

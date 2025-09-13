@@ -1,15 +1,8 @@
-// export default function Footer() {
-//   return (
-//     <footer className="mt-10 border-t border-neutral-800">
-//       <div className="mx-auto max-w-6xl px-4 py-6 text-xs text-neutral-400 flex flex-wrap gap-2 items-center justify-between">
-//         <p>© {new Date().getFullYear()} UniverseEx • Galeria de Fotos dos Rovers em Marte</p>
-//         <p>Data from NASA Mars Rover Photos API</p>
-//       </div>
-//     </footer>
-//   );
-// }
 import Logo from "@/components/Logo";
 
+/**
+ * Links pessoais (portfolio do candidato) exibidos na coluna "My Work".
+ */
 const personalLinks = [
   {
     title: 'GitHub',
@@ -21,6 +14,9 @@ const personalLinks = [
   },
 ];
 
+/**
+ * Links "Inceptions" — espaço para experimentos, forks ou versões do próprio site.
+ */
 const inceptionLinks = [
   {
     title: 'This Site',
@@ -32,6 +28,10 @@ const inceptionLinks = [
   },
 ];
 
+/**
+ * Coleção de links úteis da NASA para reforçar a procedência dos dados.
+ * Inclui a página das APIs e o site oficial (mais LinkedIn institucional).
+ */
 const nasaLinks = [
   {
     title: 'NASA APIs',
@@ -47,16 +47,33 @@ const nasaLinks = [
   },
 ];
 
+/**
+ * Componente de rodapé com múltiplas colunas.
+ *
+ * Características:
+ * - Branding com <Logo /> e descrição curta do projeto.
+ * - Três colunas de links: trabalhos pessoais, inceptions e recursos da NASA.
+ * - Seção inferior com copyright e atribuição da fonte de dados.
+ *
+ * Boas práticas:
+ * - Os links abrem em nova aba (`target="_blank"`) e usam `rel="noopener noreferrer"`.
+ * - Layout responsivo: empilhado no mobile, colunar em telas médias+.
+ * - Cores adaptadas ao tema claro/escuro (dark mode).
+ */
 export default function MultiColumns() {
   return (
     <footer className="mt-28 bg-slate-50 dark:bg-black">
+      {/* Conteúdo principal do footer (colunas) */}
       <div className="container mx-auto flex flex-col items-start space-y-12 px-8 pb-8 pt-12 md:flex-row md:space-y-0 md:space-x-12 md:px-12">
+        {/* Branding + descrição */}
         <div className="flex w-full flex-col space-y-4 text-center md:w-2/5 md:text-left">
           <Logo />
           <p className="text-sm text-slate-600">
             UniverseEx uma galeria de procura de fotos de Rovers de Marte.
           </p>
         </div>
+
+        {/* Coluna: My Work */}
         <div className="w-full text-center text-slate-600 md:w-1/5 md:text-left">
           <div className="text-sm font-semibold">My Work</div>
           <ul className="text-sm">
@@ -74,6 +91,8 @@ export default function MultiColumns() {
             ))}
           </ul>
         </div>
+
+        {/* Coluna: Inceptions (placeholder para estudos/variações do site) */}
         <div className="w-full text-center text-slate-600 md:w-1/5 md:text-left">
           <div className="text-sm font-semibold">Inceptions</div>
           <ul className="text-sm">
@@ -91,6 +110,8 @@ export default function MultiColumns() {
             ))}
           </ul>
         </div>
+
+        {/* Coluna: Links da NASA (fonte dos dados) */}
         <div className="w-full text-center text-slate-600 md:w-1/5 md:text-left">
           <div className="text-sm font-semibold text-slate-600">
             NASA Links
@@ -112,6 +133,7 @@ export default function MultiColumns() {
         </div>
       </div>
 
+      {/* Barra inferior com direitos autorais e atribuição da API */}
       <div className="container mx-auto border-t border-slate-200 p-8 text-center text-sm text-slate-600 dark:border-slate-900 md:flex-row md:px-12">
         &copy; {new Date().getFullYear()} UniverseEx . Data from NASA Mars Rover Photos API.
       </div>
