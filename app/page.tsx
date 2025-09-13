@@ -64,12 +64,20 @@ async function fetchPhotos({
   }
   const data = (await res.json()) as { photos: MarsPhoto[] };
 
+  // Normaliza URLs de imagens para usar HTTPS (evitando problemas de segurança)
+  const normalized = data.photos.map(p => ({
+    ...p,
+    img_src: p.img_src.replace(/^http:\/\//, 'https://'),
+  }));
+
   // Busca textual opcional (UX): filtra por rover/câmera
-  const filtered = (q ? data.photos.filter(p =>
+  const filtered = q
+  ? normalized.filter(p =>
     p.rover.name.toLowerCase().includes(q.toLowerCase()) ||
     p.camera.name.toLowerCase().includes(q.toLowerCase()) ||
     p.camera.full_name.toLowerCase().includes(q.toLowerCase())
-  ) : data.photos);
+  ) 
+  : normalized;
 
   return filtered;
 }
